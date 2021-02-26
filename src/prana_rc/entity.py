@@ -73,6 +73,10 @@ class PranaDeviceInfo(NamedTuple):
 
 class PranaState(object):
     def __init__(self) -> None:
+        self.temp_in: Optional[float] = None
+        self.temp_out: Optional[float] = None
+        self.humidity: Optional[int] = None
+        self.pressure: Optional[int] = None
         self.speed_locked: Optional[int] = None
         self.speed_in: Optional[int] = None
         self.speed_out: Optional[int] = None
@@ -105,6 +109,10 @@ class PranaState(object):
 
     def to_dict(self) -> dict:
         return dict(
+            temp_in=self.temp_in,
+            temp_out=self.temp_out,
+            humidity=self.humidity,
+            pressure=self.pressure,
             speed_locked=self.speed_locked,
             speed_in=self.speed_in,
             speed_out=self.speed_out,

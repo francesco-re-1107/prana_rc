@@ -37,6 +37,10 @@ class PranaDeviceInfoDTO(pydantic.BaseModel):
 
 
 class PranaStateDTO(pydantic.BaseModel):
+    temp_in: Optional[float] = None
+    temp_out: Optional[float] = None
+    humidity: Optional[int] = None
+    pressure: Optional[int] = None
     speed_locked: Optional[int] = None
     speed_in: Optional[int] = None
     speed_out: Optional[int] = None

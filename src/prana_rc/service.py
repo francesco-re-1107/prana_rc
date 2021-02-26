@@ -283,7 +283,17 @@ class PranaDevice(object):
             return None
         self.__logger.debug("State data:")
         self.__logger.debug("".join("{:02x}".format(x) for x in data))
+        
+        temp_in = float(data[49])/10
+        temp_out = float(data[55])/10
+        humidity = int(data[60]-128)
+        pressure = 512 + int(data[78])
+
         s = PranaState()
+        s.temp_in = temp_in
+        s.temp_out = temp_out
+        s.humidity = humidity
+        s.pressure = pressure
         s.timestamp = datetime.datetime.now()
         s.brightness = int(log2(data[12]) + 1)
         s.speed_locked = int(data[26] / 10)
